@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>NASONI-XPS</Machine>
+    <WindowsUser>nasoni</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>70b3645f-39c7-4b55-932c-5b24780b8f69</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>BB6B83A8608507319A499C00E1AC198552E94B3A04EE7BD36D63ACB86072B0A1</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>70b3645f-39c7-4b55-932c-5b24780b8f69_1.0.0.0_neutral__8p29edz661wc2</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>70b3645f-39c7-4b55-932c-5b24780b8f69_8p29edz661wc2!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>70b3645f-39c7-4b55-932c-5b24780b8f69</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=nasoni</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-07-18T19:40:33.199</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\WinZack.exe">
+      <PackagePath>WinZack.exe</PackagePath>
+      <Modified>2014-07-18T20:43:56.421</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T14:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\Assets\placeholder-sdk.png">
+      <PackagePath>Assets\placeholder-sdk.png</PackagePath>
+      <Modified>2014-07-18T19:22:30.383</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T14:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T14:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T14:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-07-18T19:38:08.213</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2014-07-18T19:43:52.254</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\WinZack.xr.xml">
+      <PackagePath>WinZack.xr.xml</PackagePath>
+      <Modified>2014-07-18T19:42:55.986</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\nasoni\Documents\Visual Studio 2013\Projects\ZackSnap\ZackSnap\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-07-18T19:40:32.893</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
