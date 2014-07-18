@@ -111,7 +111,7 @@ typedef void (^MSCompleteWithStringBlock)(NSString *result, NSError *error);
     
     // Init and set fields of the URLRequest
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:@"PUT"];
     [request setURL:uri];
     [request setValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"BlockBlob" forHTTPHeaderField:@"x-ms-blob-type"];
