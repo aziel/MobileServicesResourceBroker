@@ -56,7 +56,9 @@
     if (self)
     {
         // Initialize the Mobile Service client with your URL and key
-        MSClient *client = [MSClient clientWithApplicationURLString:@"https://davidni-zack1.azure-mobile.net/"
+        //MSClient *client = [MSClient clientWithApplicationURLString:@"https://davidni-zack1.azure-mobile.net/"
+        //MSClient *client = [MSClient clientWithApplicationURLString:@"https://zimgur.azure-mobile.net/"
+        MSClient *client = [MSClient clientWithApplicationURLString:@"https://jresgen2.azure-mobile.net/"
                                                      applicationKey:@"VnvtNiiIveSYAtklvCMRaFvBKPUomX24"];
         
         // Add a Mobile Service filter to enable the busy indicator
@@ -132,6 +134,17 @@
         // Let the caller know that we have finished
         completion(index);
     }];
+}
+
+- (void)callApi:(QSCompletionBlock)completion
+{
+    [self.client
+     invokeAPI:@"completeall"
+     body:nil
+     HTTPMethod:@"POST"
+     parameters:nil
+     headers:nil
+     completion:completion ];
 }
 
 - (void)busy:(BOOL)busy

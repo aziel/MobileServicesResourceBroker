@@ -45,6 +45,7 @@ typedef void (^QSBusyUpdateBlock) (BOOL busy);
 - (void)completeItem:(NSDictionary *)item
           completion:(QSCompletionWithIndexBlock)completion;
 
+- (void)callApi:(QSCompletionBlock)completion;
 
 - (void)handleRequest:(NSURLRequest *)request
                  next:(MSFilterNextBlock)next

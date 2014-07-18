@@ -13,6 +13,7 @@
 #import "MSError.h"
 #import "MSLoginController.h"
 #import "MSPush.h"
+#import "MSStorage.h"
 
 #define WindowsAzureMobileServicesSdkMajorVersion 1
 #define WindowsAzureMobileServicesSdkMinorVersion 2
