@@ -7,7 +7,7 @@ exports.post = function(request, response) {
    
     validateInputs(request, response); 
 
-    var expiryDate = formatDate(new Date(Date.parse(request.body.expiry)))
+    var expiryDate = formatDate(Date.parse(request.body.expiry));
 
     var host;
     var resourceType;
@@ -25,7 +25,7 @@ exports.post = function(request, response) {
     } else if (request.body.permissions == 'w') {
         sharedAccessPolicy.AccessPolicy.Permissions = azure.Constants.BlobConstants.SharedAccessPermissions.WRITE
     } else if (request.body.permissions == 'rw' || request.body.permissions == 'wr') {
-        sharedAccessPolicy.AccessPolicy.Permissions = 'rw';
+        sharedAccessPolicy.AccessPolicy.Permissions = azure.Constants.BlobConstants.SharedAccessPermissions.READ + azure.Constants.BlobConstants.SharedAccessPermissions.WRITE;
     }
 
     var relativePath = '/' + request.body.container + '/' + request.body.name;
@@ -35,11 +35,6 @@ exports.post = function(request, response) {
     
     response.send(statusCodes.OK, { "uri" : resourceUrlSAS });
 };
-
-exports.get = function(request, response) {
-    response.send(statusCodes.OK, { message : 'Hello World!' });
-};
-
 
 function createResourceURLWithSAS(accountName, accountKey, resourceType, blobRelativePath, sharedAccessPolicy, host) {
     // Generate the SAS for blob
