@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Mobile.Service;
 
-namespace jresgen2Service.DataObjects
+namespace TestHost.DataObjects
 {
     public class TodoItem : EntityData
     {

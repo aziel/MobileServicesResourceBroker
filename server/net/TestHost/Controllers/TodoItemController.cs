@@ -4,11 +4,11 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
-using jresgen2Service.DataObjects;
-using jresgen2Service.Models;
+using TestHost.DataObjects;
+using TestHost.Models;
 using Microsoft.WindowsAzure.Mobile.Service.Security;
 
-namespace jresgen2Service.Controllers
+namespace TestHost.Controllers
 {
     [AuthorizeLevel(AuthorizationLevel.Anonymous)]
     public class TodoItemController : TableController<TodoItem>
@@ -16,7 +16,7 @@ namespace jresgen2Service.Controllers
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            jresgen2Context context = new jresgen2Context();
+            TestHostContext context = new TestHostContext();
             DomainManager = new EntityDomainManager<TodoItem>(context, Request, Services);
         }
 

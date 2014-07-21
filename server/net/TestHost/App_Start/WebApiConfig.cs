@@ -2,10 +2,10 @@
 using System.Data.Entity;
 using System.Web.Http;
 using Microsoft.WindowsAzure.Mobile.Service;
-using jresgen2Service.DataObjects;
-using jresgen2Service.Models;
+using TestHost.DataObjects;
+using TestHost.Models;
 
-namespace jresgen2Service
+namespace TestHost
 {
     public static class WebApiConfig
     {
@@ -25,9 +25,9 @@ namespace jresgen2Service
         }
     }
 
-    public class jresgen2Initializer : ClearDatabaseSchemaIfModelChanges<jresgen2Context>
+    public class jresgen2Initializer : ClearDatabaseSchemaIfModelChanges<TestHostContext>
     {
-        protected override void Seed(jresgen2Context context)
+        protected override void Seed(TestHostContext context)
         {
             List<TodoItem> todoItems = new List<TodoItem>
             {

@@ -3,11 +3,11 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Tables;
-using jresgen2Service.DataObjects;
+using TestHost.DataObjects;
 
-namespace jresgen2Service.Models
+namespace TestHost.Models
 {
-    public class jresgen2Context : DbContext
+    public class TestHostContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -21,9 +21,10 @@ namespace jresgen2Service.Models
         // Web.config, is the same as the service name when hosted in Azure.
         private const string connectionStringName = "Name=MS_TableConnectionString";
 
-        public jresgen2Context() : base(connectionStringName)
+        public TestHostContext()
+            : base(connectionStringName)
         {
-        } 
+        }
 
         public DbSet<TodoItem> TodoItems { get; set; }
 
