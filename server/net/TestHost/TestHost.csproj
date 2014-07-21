@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>jresgen2Service</RootNamespace>
-    <AssemblyName>jresgen2Service</AssemblyName>
+    <RootNamespace>TestHost</RootNamespace>
+    <AssemblyName>TestHost</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -194,18 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Brokers\AzureBlobBroker.cs" />
-    <Compile Include="Brokers\AzureResourceBroker.cs" />
-    <Compile Include="Brokers\AzureTableBroker.cs" />
-    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
-    <Compile Include="Models\BlobParameters.cs" />
     <Compile Include="Models\jresgen2Context.cs" />
-    <Compile Include="Models\Permissions.cs" />
-    <Compile Include="Models\ResourceParameters.cs" />
-    <Compile Include="Models\ResourceType.cs" />
-    <Compile Include="Models\ResponseToken.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -227,6 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\mobile-jresgen2.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.WindowsAzure.Mobile.Service.ResourceBroker\Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.csproj">
+      <Project>{6df49521-6097-4105-b65a-f4a1956dcd67}</Project>
+      <Name>Microsoft.WindowsAzure.Mobile.Service.ResourceBroker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

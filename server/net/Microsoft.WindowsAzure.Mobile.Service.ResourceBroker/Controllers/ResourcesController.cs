@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
         /// <param name="type">The type of the resource to generate the token for.</param>
         /// <param name="parameters">Optional token parameters.</param>
         /// <returns>Returns the generated SAS token or connection string.</returns>
-        public async Task<ResponseToken> Post(string type, [FromBody] JToken parameters)
+        public async Task<ResourceResponseToken> Post(string type, [FromBody] JToken parameters)
         {
             ResourceType resourceType = this.MapResourceType(type);
             ResourceParameters defaultParams = this.ExtractParameters(resourceType, parameters);
@@ -121,15 +121,15 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
                 string permissions = parameters.Value<string>("permissions");
                 if (permissions == "r")
                 {
-                    defaultParameters.Permissions = Permissions.Read;
+                    defaultParameters.Permissions = ResourcePermissions.Read;
                 }
                 else if (permissions == "w")
                 {
-                    defaultParameters.Permissions = Permissions.Write;
+                    defaultParameters.Permissions = ResourcePermissions.Write;
                 }
                 else if (permissions == "rw")
                 {
-                    defaultParameters.Permissions = Permissions.ReadWrite;
+                    defaultParameters.Permissions = ResourcePermissions.ReadWrite;
                 }
                 else
                 {
@@ -139,7 +139,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
                 // Expiration.
                 defaultParameters.Expiration = (DateTime)parameters["expiry"];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }

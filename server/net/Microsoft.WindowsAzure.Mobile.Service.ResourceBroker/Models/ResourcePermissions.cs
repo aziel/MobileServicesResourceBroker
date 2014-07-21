@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models
 {
     /// <summary>
-    /// The possible token permission.
+    /// The possible resource access permissions.
     /// </summary>
-    public enum Permissions
+    public enum ResourcePermissions
     {
         /// <summary>
         /// Read access only.

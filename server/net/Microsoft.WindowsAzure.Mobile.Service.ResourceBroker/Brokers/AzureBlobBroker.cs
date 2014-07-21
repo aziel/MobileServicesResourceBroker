@@ -51,7 +51,7 @@
         /// Generates the resource.
         /// </summary>
         /// <returns>Returns the resource.</returns>
-        public override async Task<ResponseToken> CreateResourceAsync()
+        public override async Task<ResourceResponseToken> CreateResourceAsync()
         {
             // Set up the storage account connection.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(this.storageConnectionString);
@@ -74,7 +74,7 @@
             string sasBlobToken = blob.GetSharedAccessSignature(sasConstraints);
 
             // Append this to the URI.
-            return new ResponseToken { Uri = blob.Uri + sasBlobToken };
+            return new ResourceResponseToken { Uri = blob.Uri + sasBlobToken };
         }
 
         private SharedAccessBlobPolicy GetSasConstraints()
@@ -92,12 +92,12 @@
 
             // Permissions.
             sasConstraints.Permissions = SharedAccessBlobPermissions.None;
-            if ((this.blobParameters.Permissions & Permissions.Read) == Permissions.Read)
+            if ((this.blobParameters.Permissions & ResourcePermissions.Read) == ResourcePermissions.Read)
             {
                 sasConstraints.Permissions |= SharedAccessBlobPermissions.Read;
             }
 
-            if ((this.blobParameters.Permissions & Permissions.Write) == Permissions.Write)
+            if ((this.blobParameters.Permissions & ResourcePermissions.Write) == ResourcePermissions.Write)
             {
                 sasConstraints.Permissions |= SharedAccessBlobPermissions.Write;
             }

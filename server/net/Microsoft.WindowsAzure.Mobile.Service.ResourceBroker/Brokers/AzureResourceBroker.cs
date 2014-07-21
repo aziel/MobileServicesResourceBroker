@@ -61,6 +61,6 @@
         /// Generates the resource.
         /// </summary>
         /// <returns>Returns the resource or null.</returns>
-        public abstract Task<ResponseToken> CreateResourceAsync();
+        public abstract Task<ResourceResponseToken> CreateResourceAsync();
     }
 }

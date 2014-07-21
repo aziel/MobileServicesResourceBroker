@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models
 {
-    public class ResponseToken
+    public class ResourceResponseToken
     {
         /// <summary>
         /// Gets or sets the folder name.

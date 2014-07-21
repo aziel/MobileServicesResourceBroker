@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models
         /// <summary>
         /// Gets or sets the requested permissions.
         /// </summary>
-        public Permissions Permissions
+        public ResourcePermissions Permissions
         {
             get;
             set;

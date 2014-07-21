@@ -34,7 +34,7 @@
         /// Generates the resource.
         /// </summary>
         /// <returns>Returns the resource.</returns>
-        public override Task<ResponseToken> CreateResourceAsync()
+        public override Task<ResourceResponseToken> CreateResourceAsync()
         {
             throw new NotImplementedException();
         }
