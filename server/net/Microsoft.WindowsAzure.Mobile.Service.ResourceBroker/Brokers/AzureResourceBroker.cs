@@ -1,12 +1,12 @@
-﻿namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models;
 
+namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
+{
     /// <summary>
     /// Generates tokens or connection strings for an Azure resource.
     /// </summary>
@@ -44,7 +44,7 @@
         /// <param name="connectionString">Optional connection string for the resource.</param>
         /// <param name="parameters">The resource parameters.</param>
         /// <returns>Returns the broker.</returns>
-        public static AzureResourceBroker Factory(ResourceType type, string connectionString, ResourceParameters parameters)
+        public static AzureResourceBroker Create(ResourceType type, string connectionString, ResourceParameters parameters)
         {
             switch (type)
             {

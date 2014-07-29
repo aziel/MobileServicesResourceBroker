@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHost", "TestHost\TestHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsAzure.Mobile.Service.ResourceBroker", "Microsoft.WindowsAzure.Mobile.Service.ResourceBroker\Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.csproj", "{6DF49521-6097-4105-B65A-F4A1956DCD67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.WindowsAzure.Mobile.Service.ResourceBroker", "Test.WindowsAzure.Mobile.Service.ResourceBroker\Test.WindowsAzure.Mobile.Service.ResourceBroker.csproj", "{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,16 @@ Global
 		{6DF49521-6097-4105-B65A-F4A1956DCD67}.Release|ARM.ActiveCfg = Release|Any CPU
 		{6DF49521-6097-4105-B65A-F4A1956DCD67}.Release|x64.ActiveCfg = Release|Any CPU
 		{6DF49521-6097-4105-B65A-F4A1956DCD67}.Release|x86.ActiveCfg = Release|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Release|x64.ActiveCfg = Release|Any CPU
+		{3F2994B4-4FCE-484E-A7ED-C744BC506CD1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

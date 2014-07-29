@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
                 throw new InvalidOperationException("The RESOURCE_BROKER_BLOB_ACCOUNT setting is missing or invalid.");
             }
 
-            AzureResourceBroker broker = AzureResourceBroker.Factory(resourceType, blobConnectionString, defaultParams);
+            AzureResourceBroker broker = AzureResourceBroker.Create(resourceType, blobConnectionString, defaultParams);
             return await broker.CreateResourceAsync();
         }
 

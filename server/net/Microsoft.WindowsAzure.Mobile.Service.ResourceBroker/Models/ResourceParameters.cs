@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models
         /// <summary>
         /// Gets or sets the desired expiration time.
         /// </summary>
-        public DateTime Expiration
+        public DateTime? Expiration
         {
             get;
             set;
