@@ -17,8 +17,10 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
     /// </summary>
     public class AzureBlobBroker : AzureResourceBroker
     {
+        private bool initialized;
+        private string connectionString;
         private BlobParameters blobParameters;
-        private IStorageProvider storage = new StorageProvider();
+        private IStorageProvider storageProvider;
 
         /// <summary>
         /// Initializes a new instance of the AzureBlobBroker class.
@@ -33,6 +35,8 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
                 throw new ArgumentException("storageConnectionString is invalid");
             }
 
+            this.connectionString = storageConnectionString;
+
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
@@ -45,7 +49,24 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
                 throw new ArgumentException("Expected a BlobParameters collection", "parameters");
             }
 
-            this.storage.Initialize(storageConnectionString);
+            if (string.IsNullOrWhiteSpace(this.blobParameters.Container))
+            {
+                throw new ArgumentException("The container name must not be null or empty", "parameters.Container");
+            }
+
+            if (string.IsNullOrWhiteSpace(this.blobParameters.Name))
+            {
+                throw new ArgumentException("The blob name must not be null or empty", "parameters.Name");
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the storage provider.
+        /// </summary>
+        public IStorageProvider StorageProvider
+        {
+            get;
+            set;
         }
 
         /// <summary>
@@ -54,13 +75,33 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
         /// <returns>Returns the resource.</returns>
         public override async Task<ResourceResponseToken> CreateResourceAsync()
         {
+            this.Initialize();
+
             // Todo: is this necessary?
-            if (!await this.storage.CheckBlobContainerExistsAsync(this.blobParameters.Container))
+            if (!await this.storageProvider.CheckBlobContainerExistsAsync(this.blobParameters.Container))
             {
                 throw new HttpResponseException(HttpStatusCode.Forbidden);
             }
 
-            return this.storage.CreateBlob(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
+            return this.storageProvider.CreateBlob(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
+        }
+
+        /// <summary>
+        /// Initializes the contents of the class if this has not been done already.
+        /// </summary>
+        private void Initialize()
+        {
+            if (!this.initialized)
+            {
+                if (this.storageProvider == null)
+                {
+                    this.storageProvider = new StorageProvider();
+                }
+
+                this.storageProvider.Initialize(this.connectionString);
+
+                this.initialized = true;
+            }
         }
     }
 }
