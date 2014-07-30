@@ -20,7 +20,6 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
         private bool initialized;
         private string connectionString;
         private BlobParameters blobParameters;
-        private IStorageProvider storageProvider;
 
         /// <summary>
         /// Initializes a new instance of the AzureBlobBroker class.
@@ -78,12 +77,12 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
             this.Initialize();
 
             // Todo: is this necessary?
-            if (!await this.storageProvider.CheckBlobContainerExistsAsync(this.blobParameters.Container))
+            if (!await this.StorageProvider.CheckBlobContainerExistsAsync(this.blobParameters.Container))
             {
                 throw new HttpResponseException(HttpStatusCode.Forbidden);
             }
 
-            return this.storageProvider.CreateBlob(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
+            return this.StorageProvider.CreateBlob(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
         }
 
         /// <summary>
@@ -93,12 +92,12 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
         {
             if (!this.initialized)
             {
-                if (this.storageProvider == null)
+                if (this.StorageProvider == null)
                 {
-                    this.storageProvider = new StorageProvider();
+                    this.StorageProvider = new StorageProvider();
                 }
 
-                this.storageProvider.Initialize(this.connectionString);
+                this.StorageProvider.Initialize(this.connectionString);
 
                 this.initialized = true;
             }
