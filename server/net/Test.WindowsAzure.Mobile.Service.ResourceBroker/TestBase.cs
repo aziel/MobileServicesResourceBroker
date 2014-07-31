@@ -40,5 +40,10 @@ namespace Test.WindowsAzure.Mobile.Service.ResourceBroker
 
             return response;
         }
+
+        public string DateTimeToSASDateString(DateTime date)
+        {
+            return string.Format("{0:D4}-{1:D2}-{2:D2}T{3:D2}%3A{4:D2}%3A{5:D2}Z", date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second);
+        }
     }
 }

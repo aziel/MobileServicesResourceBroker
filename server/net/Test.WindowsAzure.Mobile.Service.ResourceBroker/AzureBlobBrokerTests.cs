@@ -93,7 +93,69 @@ namespace Test.WindowsAzure.Mobile.Service.ResourceBroker
             Assert.IsNotNull(token);
 
             SASParts parts = new SASParts(token.Uri);
-            Assert.AreEqual(parts.HostName, "https://test.blob.core.windows.net/container/blob");
+            Assert.AreEqual("https://test.blob.core.windows.net/container/blob", parts.HostName);
+        }
+
+        [TestMethod]
+        public void CreateResourceAsync_WithExpirationDate_ReturnsCorrectExpirationDate()
+        {
+            // Setup
+            DateTime expiration = new DateTime(2199, 3, 12);
+            AzureBlobBroker broker = new AzureBlobBroker(ConnectionString, new BlobParameters { Name = "blob", Container = "container", Permissions = ResourcePermissions.Read, Expiration = expiration });
+
+            // Act.
+            ResourceResponseToken token = broker.CreateResourceToken();
+
+            // Assert.
+            Assert.IsNotNull(token);
+
+            SASParts parts = new SASParts(token.Uri);
+            Assert.AreEqual("2199-03-12T07%3A00%3A00Z", parts.Value("se"));
+        }
+
+        [TestMethod]
+        public void CreateResourceAsync_WithNoExpirationDate_ReturnsNoExpirationDate()
+        {
+            // Setup
+            AzureBlobBroker broker = new AzureBlobBroker(ConnectionString, new BlobParameters { Name = "blob", Container = "container", Permissions = ResourcePermissions.Read });
+
+            // Act.
+            ResourceResponseToken token = broker.CreateResourceToken();
+
+            // Assert.
+            Assert.IsNotNull(token);
+
+            SASParts parts = new SASParts(token.Uri);
+            Assert.AreEqual(null, parts.Value("se"));
+        }
+
+        [TestMethod]
+        public void CreateResourceAsync_ReturnsExpectedStartDate()
+        {
+            // Setup
+            AzureBlobBroker broker = new AzureBlobBroker(ConnectionString, new BlobParameters { Name = "blob", Container = "container", Permissions = ResourcePermissions.Read });
+
+            // Act.
+            ResourceResponseToken token = broker.CreateResourceToken();
+
+
+            // Assert.
+            Assert.IsNotNull(token);
+
+            // Calculate the expected start time give or take 4 seconds.
+            DateTime startRangeBegin = DateTime.UtcNow - TimeSpan.FromMinutes(5) - TimeSpan.FromSeconds(2);
+            DateTime startRangeEnd = startRangeBegin + TimeSpan.FromSeconds(2);
+
+            // Now convert these into strings using the SAS format.
+            string startRangeBeginString = this.DateTimeToSASDateString(startRangeBegin);
+            string startRangeEndString = this.DateTimeToSASDateString(startRangeEnd);
+
+            // Get the actual begin time from the SAS token.
+            SASParts parts = new SASParts(token.Uri);
+            string beginning = parts.Value("st");
+
+            // Make sure it is within the range.
+            Assert.IsTrue(string.CompareOrdinal(beginning, startRangeBeginString) >= 0 && string.CompareOrdinal(beginning, startRangeEndString) <= 0);
         }
 
         [TestMethod]
