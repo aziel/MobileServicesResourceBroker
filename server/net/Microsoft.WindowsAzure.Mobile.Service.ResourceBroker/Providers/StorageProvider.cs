@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Providers
             SharedAccessTablePolicy sasConstraints = GetTableSasConstraints(permissions, expiration);
 
             // Get a reference to the table.
-            CloudTable table = this.tableClient.GetTableReference(tableName);
+            CloudTable table = this.TableClient.GetTableReference(tableName);
 
             // Get the table SAS.
             string sasTableToken = table.GetSharedAccessSignature(sasConstraints);

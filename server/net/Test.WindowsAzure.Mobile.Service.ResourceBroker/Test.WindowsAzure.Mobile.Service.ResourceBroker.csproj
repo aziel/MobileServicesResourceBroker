@@ -67,6 +67,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AzureTableBrokerTests.cs" />
     <Compile Include="AzureBlobBrokerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SASParts.cs" />
