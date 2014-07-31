@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
         /// <param name="type">The type of the resource to generate the token for.</param>
         /// <param name="parameters">Optional token parameters.</param>
         /// <returns>Returns the generated SAS token or connection string.</returns>
-        public async Task<ResourceResponseToken> Post(string type, [FromBody] JToken parameters)
+        public ResourceResponseToken Post(string type, [FromBody] JToken parameters)
         {
             ResourceType resourceType = this.MapResourceType(type);
             ResourceParameters defaultParams = this.ExtractParameters(resourceType, parameters);
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Controllers
             }
 
             AzureResourceBroker broker = AzureResourceBroker.Create(resourceType, blobConnectionString, defaultParams);
-            return await broker.CreateResourceAsync();
+            return broker.CreateResourceToken();
         }
 
         /// <summary>

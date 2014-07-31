@@ -17,9 +17,8 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
     /// </summary>
     public class AzureBlobBroker : AzureResourceBroker
     {
-        private bool initialized;
-        private string connectionString;
         private BlobParameters blobParameters;
+        private StorageProvider storageProvider;
 
         /// <summary>
         /// Initializes a new instance of the AzureBlobBroker class.
@@ -33,8 +32,6 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
             {
                 throw new ArgumentException("storageConnectionString is invalid");
             }
-
-            this.connectionString = storageConnectionString;
 
             if (parameters == null)
             {
@@ -57,50 +54,17 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
             {
                 throw new ArgumentException("The blob name must not be null or empty", "parameters.Name");
             }
-        }
 
-        /// <summary>
-        /// Gets or sets the storage provider.
-        /// </summary>
-        public IStorageProvider StorageProvider
-        {
-            get;
-            set;
+            this.storageProvider = new StorageProvider(storageConnectionString);
         }
 
         /// <summary>
         /// Generates the resource.
         /// </summary>
         /// <returns>Returns the resource.</returns>
-        public override async Task<ResourceResponseToken> CreateResourceAsync()
+        public override ResourceResponseToken CreateResourceToken()
         {
-            this.Initialize();
-
-            // Todo: is this necessary?
-            if (!await this.StorageProvider.CheckBlobContainerExistsAsync(this.blobParameters.Container))
-            {
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
-            }
-
-            return this.StorageProvider.CreateBlob(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
-        }
-
-        /// <summary>
-        /// Initializes the contents of the class if this has not been done already.
-        /// </summary>
-        private void Initialize()
-        {
-            if (!this.initialized)
-            {
-                if (this.StorageProvider == null)
-                {
-                    this.StorageProvider = new StorageProvider();
-                }
-
-                this.StorageProvider.Initialize(this.connectionString);
-
-                this.initialized = true;
-            }
+            return this.storageProvider.CreateBlobAccessToken(this.blobParameters.Container, this.blobParameters.Name, this.blobParameters.Permissions, this.blobParameters.Expiration);
         }
     }
 }

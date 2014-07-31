@@ -58,9 +58,9 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
         }
 
         /// <summary>
-        /// Generates the resource.
+        /// Generates the resource token.
         /// </summary>
         /// <returns>Returns the resource or null.</returns>
-        public abstract Task<ResourceResponseToken> CreateResourceAsync();
+        public abstract ResourceResponseToken CreateResourceToken();
     }
 }

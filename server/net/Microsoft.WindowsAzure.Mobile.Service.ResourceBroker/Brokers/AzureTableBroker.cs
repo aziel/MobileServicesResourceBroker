@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models;
+using Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Providers;
 
 namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
 {
@@ -12,7 +13,8 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
     /// </summary>
     public class AzureTableBroker : AzureResourceBroker
     {
-        private string storageConnectionString;
+        private ResourceParameters tableParameters;
+        private StorageProvider storageProvider;
 
         /// <summary>
         /// Initializes a new instance of the AzureTableBroker class.
@@ -27,16 +29,28 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Brokers
                 throw new ArgumentException("storageConnectionString is invalid");
             }
 
-            this.storageConnectionString = storageConnectionString;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            this.tableParameters = parameters;
+
+            if (string.IsNullOrWhiteSpace(this.tableParameters.Name))
+            {
+                throw new ArgumentException("The table name must not be null or empty", "parameters.Name");
+            }
+
+            this.storageProvider = new StorageProvider(storageConnectionString);
         }
 
         /// <summary>
         /// Generates the resource.
         /// </summary>
         /// <returns>Returns the resource.</returns>
-        public override Task<ResourceResponseToken> CreateResourceAsync()
+        public override ResourceResponseToken CreateResourceToken()
         {
-            throw new NotImplementedException();
+            return this.storageProvider.CreateTableAccessToken(this.tableParameters.Name, this.tableParameters.Permissions, this.tableParameters.Expiration);
         }
     }
 }

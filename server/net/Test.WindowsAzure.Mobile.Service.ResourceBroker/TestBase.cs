@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models;
 
 namespace Test.WindowsAzure.Mobile.Service.ResourceBroker
 {

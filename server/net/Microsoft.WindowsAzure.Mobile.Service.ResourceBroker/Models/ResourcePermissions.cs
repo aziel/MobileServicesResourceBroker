@@ -17,17 +17,32 @@ namespace Microsoft.WindowsAzure.Mobile.Service.ResourceBroker.Models
         None = 0,
 
         /// <summary>
-        /// Read access only.
+        /// Full read access.
         /// </summary>
         Read = 1,
 
         /// <summary>
-        /// Write access only.
+        /// Access to add an item.
         /// </summary>
-        Write = 2,
+        Add = 2,
 
         /// <summary>
-        /// Read and write access only.
+        /// Access to update an item.
+        /// </summary>
+        Update = 4,
+
+        /// <summary>
+        /// Access to delete an item.
+        /// </summary>
+        Delete = 8,
+
+        /// <summary>
+        /// Full write access.
+        /// </summary>
+        Write = Add | Update | Delete,
+
+        /// <summary>
+        /// Full read and write access.
         /// </summary>
         ReadWrite = Read | Write
     }
