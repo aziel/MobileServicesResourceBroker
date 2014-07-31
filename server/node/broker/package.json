@@ -1,0 +1,46 @@
+{
+  "name": "resource-broker",
+  "author": "Muhammad Hasan Khan",
+  "version": "0.3.0",
+  "description": "A general purpose resource broker for Azure",
+  "tags": [
+    "azure",
+    "webapi"
+  ],
+  "keywords": [
+    "azure",
+    "webapi"
+  ],
+  "main": "./lib/broker.js",
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "azure": "~0.9.13"
+  },
+  "homepage": "https://github.com/aziel/MobileServicesResourceBroker.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aziel/MobileServicesResourceBroker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aziel/MobileServicesResourceBroker/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "jshint": "jshint lib",
+    "unit": "jasmine-node test"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.3",
+    "jshint": "^2.5.1",
+    "proxyquire": "^1.0.0"
+  }
+}
